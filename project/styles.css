@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+#header,
+#content{
+    text-align: center;
+}
+
+#header{
+    font-size: 40px;
+}
+
+#lists{
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+}
+
+#add_button,
+#complete_button{
+    background: grey;
+}

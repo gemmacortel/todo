@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    volumes:
+      - ./data/db:/var/lib/mysql
+    ports:
+      - "9906:3306"
+  web:
+    image: php:7.2.2-apache
+    container_name: web
+    depends_on:
+      - db
+    volumes:
+      - ./project/:/var/www/html
+      - ./config/custom.php.ini:/usr/local/etc/php/conf.d/custom.php.ini
+    ports:
+      - "8100:80"
+    stdin_open: true
+    tty: true
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    container_name: mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
